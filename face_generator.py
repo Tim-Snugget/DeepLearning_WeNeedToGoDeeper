@@ -8,6 +8,7 @@ from tensorflow import keras
 from PIL import Image
 import matplotlib.pyplot as plt
 import numpy as np
+import shutil
 
 
 def load_from_directory(filename, resize, batch_size=32,):
@@ -180,34 +181,33 @@ class GANMonitor(keras.callbacks.Callback):
             img = keras.preprocessing.image.array_to_img(generated_images[i])
             img.save("generated_img_%03d_%d.png" % (epoch, i))
 
-latent_dim = 128
+if __name__ == "__main__":
+        latent_dim = 128
 
-gan = GAN(discriminator=Discriminator().model, generator=Generator(latent_dim).model, latent_dim=latent_dim)
-gan.compile(
-    d_optimizer=Adam(learning_rate=0.0001),
-    g_optimizer=Adam(learning_rate=0.0001),
-    loss_fn=BinaryCrossentropy(),
-)
+        gan = GAN(discriminator=Discriminator().model, generator=Generator(latent_dim).model, latent_dim=latent_dim)
+        gan.compile(
+            d_optimizer=Adam(learning_rate=0.0001),
+            g_optimizer=Adam(learning_rate=0.0001),
+            loss_fn=BinaryCrossentropy(),
+        )
 
-dataset = load_from_directory('./img/face',(64,64))
+        dataset = load_from_directory('./img/face',(64,64))
 
-epochs = 60
-gan.fit(dataset, epochs=epochs, callbacks=[GANMonitor(num_img=10, latent_dim=latent_dim)])
+        epochs = 60
+        gan.fit(dataset, epochs=epochs, callbacks=[GANMonitor(num_img=10, latent_dim=latent_dim)])
 
-random_latent_vectors = tf.random.normal(shape=(10, 128))
-generated_images = gan.generator.predict(random_latent_vectors)
-generated_images *= 255
+        random_latent_vectors = tf.random.normal(shape=(10, 128))
+        generated_images = gan.generator.predict(random_latent_vectors)
+        generated_images *= 255
 
 
-for i in range(10):
-    img = keras.preprocessing.image.array_to_img(generated_images[i])
-    
-    #plt.figure(figsize=(3,3)) 
-    plt.axis("off")
-    plt.imshow(img)
-    break
+        for i in range(10):
+            img = keras.preprocessing.image.array_to_img(generated_images[i])
 
-gan.generator.save('stable_20_epochs_tanh_celeba.h5')
-
-import shutil
-shutil.make_archive('20images', 'zip', './')
+            #plt.figure(figsize=(3,3)) 
+            plt.axis("off")
+            plt.imshow(img)
+            break
+        
+        gan.generator.save('stable_20_epochs_tanh_celeba.h5')
+        shutil.make_archive('20images', 'zip', './')        
