@@ -54,7 +54,7 @@ class Discriminator(CustomModel):
         model = Sequential(
             [
                 # 64x64 input
-                Conv2D(64, input_shape=(64, 64, 3), kernel_size=4, strides=2, padding="same", ),
+                Conv2D(64, input_shape=(128, 128, 3), kernel_size=4, strides=2, padding="same", ),
                 LeakyReLU(alpha=0.2),
                 # to 32x32
                 Conv2D(128, kernel_size=4, strides=2, padding="same"),
@@ -191,7 +191,7 @@ if __name__ == "__main__":
             loss_fn=BinaryCrossentropy(),
         )
 
-        dataset = load_from_directory('../Dataset/face',(64,64))
+        dataset = load_from_directory('Female', (128, 128))
 
         epochs = 60
         gan.fit(dataset, epochs=epochs, callbacks=[GANMonitor(num_img=10, latent_dim=latent_dim)])
