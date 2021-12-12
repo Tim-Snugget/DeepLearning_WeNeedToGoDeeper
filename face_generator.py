@@ -191,10 +191,12 @@ if __name__ == "__main__":
             loss_fn=BinaryCrossentropy(),
         )
 
-        dataset = load_from_directory('./img/face',(64,64))
+        dataset = load_from_directory('../Dataset/face',(64,64))
 
         epochs = 60
         gan.fit(dataset, epochs=epochs, callbacks=[GANMonitor(num_img=10, latent_dim=latent_dim)])
+
+        gan.generator.save('gan_temp.h5')
 
         random_latent_vectors = tf.random.normal(shape=(10, 128))
         generated_images = gan.generator.predict(random_latent_vectors)
