@@ -32,14 +32,6 @@ def load_from_npz(filename, resize, data_parm='arr_0', batch_size=32, shuffle_bu
         batch_size)  # shuffle (5arbat 5arabit (｡･∀･)ﾉﾞ（＾∀＾●）ﾉｼ) and batch them
     return dataset
 
-
-def display_sample(dataset):
-    for x in dataset:
-        plt.axis("off")
-        plt.imshow((x.numpy() * 255).astype("int32")[0])
-        break
-
-
 class CustomModel:
     def __init__(self):
         self.model = self.build_model()
@@ -54,7 +46,7 @@ class Discriminator(CustomModel):
         model = Sequential(
             [
                 # 64x64 input
-                Conv2D(64, input_shape=(128, 128, 3), kernel_size=4, strides=2, padding="same", ),
+                Conv2D(64, input_shape=(64, 64, 3), kernel_size=4, strides=2, padding="same", ),
                 LeakyReLU(alpha=0.2),
                 # to 32x32
                 Conv2D(128, kernel_size=4, strides=2, padding="same"),
@@ -88,8 +80,6 @@ class Generator(CustomModel):
                 Conv2DTranspose(256, kernel_size=4, strides=2, padding="same"),
                 LeakyReLU(alpha=0.2),
                 Conv2DTranspose(512, kernel_size=4, strides=2, padding="same"),
-                LeakyReLU(alpha=0.2),
-                Conv2DTranspose(1024, kernel_size=4, strides=2, padding="same"),
                 LeakyReLU(alpha=0.2),
                 Conv2D(3, kernel_size=5, padding="same", activation="tanh"),
             ],
@@ -191,9 +181,9 @@ if __name__ == "__main__":
             loss_fn=BinaryCrossentropy(),
         )
 
-        dataset = load_from_directory('Female', (128, 128))
+        dataset = load_from_directory('Female',(64,64))
 
-        epochs = 60
+        epochs = 1 # 10
         gan.fit(dataset, epochs=epochs, callbacks=[GANMonitor(num_img=10, latent_dim=latent_dim)])
 
         gan.generator.save('gan_temp.h5')
