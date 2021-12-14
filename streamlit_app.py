@@ -76,7 +76,7 @@ def main():
         st.write('''
             ## Processing... ⌛
         ''')
-        if not os.path.exists("generated_img_%03d_0.png" % (epoch_selector - 1)):
+        if not os.path.exists("./generated_images/generated_img_%03d_0.png" % (epoch_selector - 1)):
             st.error(f"Epoch {epoch_selector} is not avaiable... yet!")
             return
         display_image_grids(epoch_selector)
