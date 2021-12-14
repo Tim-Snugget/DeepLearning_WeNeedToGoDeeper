@@ -1,29 +1,6 @@
 
-<style>
-    h1 {
-        text-align: center; color: black; font-style: bold; background-color:DARKORANGE; border-radius: 25px;
-    }
-    h2 {
-        color: Cyan;
-    }
-    h3 {
-        color: skyblue;
-        font-style: italic;
-    }
-
-    h4 {
-        text-align: center;
-        background-color: Darkorange; border-radius: 5px;
-    }
-
-    h4 > a {
-        font-size: 5vh;
-        color: black;
-    }
-</style>
-
-
 # WAIFU GENERATOR
+## => [Web App](https://share.streamlit.io/tim-snugget/deeplearning_weneedtogodeeper/main) <=
 
 ## Contributors
 Epitech 4th year students - Global Nomad Track Program
@@ -55,9 +32,7 @@ We trained the AI on a local machine (Win 10 - Ryzen 5 1600) using a GPU (GTX 10
 
 Since the AI is not really fully trained (yet?) the result is quite inconclusive. Yet, it shows it is definitely achievable... at least, face-wise.  
 Indeed, since we only have datasets of faces available, we only focused on said body part, instead of the whole package.  
-Generated images are then ***available on our Web App***.
-
-#### [The  Web App is available here](https://share.streamlit.io/tim-snugget/deeplearning_weneedtogodeeper/main).
+Generated images are then ***[available here on our Web App](https://share.streamlit.io/tim-snugget/deeplearning_weneedtogodeeper/main)***.
 
 ## Tools
 - Python
