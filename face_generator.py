@@ -169,7 +169,7 @@ class GANMonitor(keras.callbacks.Callback):
         generated_images.numpy()
         for i in range(self.num_img):
             img = keras.preprocessing.image.array_to_img(generated_images[i])
-            img.save("generated_img_%03d_%d.png" % (epoch, i))
+            img.save("./generated_images/generated_img_%03d_%d.png" % (epoch, i))
 
 if __name__ == "__main__":
         latent_dim = 128
@@ -184,6 +184,10 @@ if __name__ == "__main__":
         dataset = load_from_directory('Female',(64,64))
 
         epochs = 1 # 10
+        ### We first wanted to run 60 epochs to train the AI the best we could
+        # but even with a GPU (GTX 1050 2GB) one epoch took 1 hour to be processed (in the best case, otherwise longer)
+        # We so chose to reduce epochs to 10, then one to have a result during the delivery
+
         gan.fit(dataset, epochs=epochs, callbacks=[GANMonitor(num_img=10, latent_dim=latent_dim)])
 
         gan.generator.save('gan_temp.h5')

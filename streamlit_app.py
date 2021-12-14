@@ -59,7 +59,7 @@ def main():
     def display_image_grids(epoch):
         images = []
         for i in range(10):
-            images.append(Image.open("generated_img_%03d_%d.png" % (epoch - 1, i)))
+            images.append(Image.open("./generated_images/generated_img_%03d_%d.png" % (epoch - 1, i)))
 
         c1.image(images[0])
         c1.image(images[5])
@@ -92,40 +92,6 @@ hide_menu_style = """
         </style>
         """
 st.markdown(hide_menu_style, unsafe_allow_html=True)
-#     col1, col2 = st.columns([5, 2])
-#
-#     with col1:
-#         with st.expander(" ℹ️ Information", expanded=True):
-#             st.write("""
-#             In Epitech, students are facing with their deepest nightmare - the gender gap in Tech. With less than 3% of women per class (in average), Epitech students have no way to practice the courtship practices so common at other schools. By the time they leave the school, the students are either unfit for the other gender, or at best have become monks with a vow of abstinence.\n
-#             However, our group is here to save the day. With our Cyber Waifu Generator, students can now create the perfect woman to talk with, without the fear of being judged.
-#             """)
-#         '''
-#         ## How does it work ❓
-#         Click and Enjoy!
-#         '''
-#
-#     with col2:
-#         st.subheader("Make the perfect waifu appear")
-#
-#         ## TODO image placeholder
-#
-#         if (st.button("Enjoy!")):
-#             col1.write('''
-#                 ## Processing... ⌛
-#             ''')
-#             col2.success('''
-#                 CYBER WAIFUUUUU
-#             ''')
-#
-#     st.markdown(footer, unsafe_allow_html=True)
-#
-# hide_menu_style = """
-#         <style>
-#         #MainMenu {visibility: hidden;}
-#         </style>
-#         """
-# st.markdown(hide_menu_style, unsafe_allow_html=True)
 
 footer="""<style>
 a:link , a:visited{
