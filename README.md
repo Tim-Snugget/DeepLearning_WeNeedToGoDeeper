@@ -14,8 +14,8 @@ The project goal was to develop and train an AI using Deep Learning techs and de
 Our ambition was to be able to generate an OnlyFans model using Deepface and Image Generation technologies. Images we could then use to open the first Cyber Waifu OnlyFans account and generate profits to pay our loan to the banks.  
 
 ## The Project
-        In Epitech, students are facing with their deepest nightmare - the gender gap in Tech. With less than 3% of women per class (in average), Epitech students have no way to practice the courtship practices so common at other schools. By the time they leave the school, the students are either unfit for the other gender, or at best have become monks with a vow of abstinence.
-        However, our group is here to save the day. With our Cyber Waifu Generator, students can now create the perfect woman to talk with, without the fear of being judged.
+In Epitech, students are facing with their deepest nightmare - the gender gap in Tech. With less than 3% of women per class (in average), Epitech students have no way to practice the courtship practices so common at other schools. By the time they leave the school, the students are either unfit for the other gender, or at best have become monks with a vow of abstinence.  
+However, our group is here to save the day. With our Cyber Waifu Generator, students can now create the perfect woman to talk with, without the fear of being judged.
 
 ## The Tech
 ### The Datasets
